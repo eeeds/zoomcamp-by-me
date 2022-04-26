@@ -31,3 +31,8 @@
 SELECT 1
 
 ```
+## 9. Open a Jupyter notebook and download the data from (use wget)
+```
+https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv
+```
+## 10. Do some stuffs on the Jupyter-notebook.
