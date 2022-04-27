@@ -72,5 +72,5 @@ https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv
     
 ```
 ## You'll see the containers running. Just as this image:
-## ./Docker-containers%20running.PNG
+    ![image](.\Docker-containers running.PNG)
 
