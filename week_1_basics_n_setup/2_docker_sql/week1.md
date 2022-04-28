@@ -78,4 +78,34 @@ https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv
 ```
     jupyter nbconvert --to=script upload-data.ipynb
 ```
+## 15. Use argparse to parse the arguments.
+```
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--file", help="Path to the file", type=str)
+    args = parser.parse_args()
+    print(args.file)
+```
 
+## 16. Add main to the python script.
+
+## 17. Drop yellow_taxi data from postgres and then try the python script
+```
+URL="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv"
+
+python ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trip \
+  --url=${URL}
+
+```
+## 18. Make sure that everything is working with the following command
+```
+    $? is a built-in variable that stores the exit status of a command, function, or the script itself.
+
+    $? reads the exit status of the last command executed. After a function returns, $? gives the exit status of the last command executed in the function. This is Bash's way of giving functions a "return value." It returns 0 on success or an integer in the range 1 - 255 on error.
+```
