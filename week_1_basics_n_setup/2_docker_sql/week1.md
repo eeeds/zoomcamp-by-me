@@ -109,3 +109,29 @@ python ingest_data.py \
 
     $? reads the exit status of the last command executed. After a function returns, $? gives the exit status of the last command executed in the function. This is Bash's way of giving functions a "return value." It returns 0 on success or an integer in the range 1 - 255 on error.
 ```
+## 19. Dockerizing Ingestion Script
+```
+    docker built -t taxi_ingest:v001 .
+```
+## 20 . Run Python script with docker image
+```
+    winpty docker run -it \
+    --network=pg-network \
+    taxi_ingest:v001 \
+  --user=root \
+  --password=root \
+  --host=pg-database \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trip \
+  --url=${URL}
+```
+## 21. You could see your files in a local server using the following command
+```
+    python -m http.server
+```
+## 22. Find your IP address using the following command
+```
+    ipconfig
+```
+## 23. Open a browser and go to your IP address and port 8080. Then you can see the files in the local server.

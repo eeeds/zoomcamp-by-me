@@ -38,12 +38,28 @@ services:
     --name pgadmin \
     dpage/pgadmin4
 ##Try arguments with python
-URL="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv"
+URL="http://168.20.11.1:8000/yellow_tripdata_2021-01.csv"
 
 python ingest_data.py \
   --user=root \
   --password=root \
   --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trip \
+  --url=${URL}
+
+##Dockerizing Ingestion Script
+
+docker built -t taxi_ingest:v001 .
+
+##Run script again.
+  winpty docker run -it \
+  --network=pg-network \
+  taxi_ingest:v001 \
+  --user=root \
+  --password=root \
+  --host=pg-database \
   --port=5432 \
   --db=ny_taxi \
   --table_name=yellow_taxi_trip \

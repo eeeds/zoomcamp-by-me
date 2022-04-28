@@ -20,7 +20,7 @@ def main(params):
     os.system(f"wget {url} -O {csv_name}")
 
     #Create PostgresSQl connection
-    engine = create_engine("postgresql://{user}:{password}@{host}:{port}/{db}")
+    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     #Insert as a chunk
     df_iter= pd.read_csv(csv_name, iterator = True, chunksize = 100000)
 
