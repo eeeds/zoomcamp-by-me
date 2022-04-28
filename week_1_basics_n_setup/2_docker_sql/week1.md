@@ -144,3 +144,40 @@ python ingest_data.py \
 ```
     docker-compose down
 ```
+## 26. Add more data to the database.
+```
+wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
+```
+## 27. Run the Jupyter and add the data to the db.
+```
+   df_zones.to_sql(name='zones', con= engine, if_exists='replace')
+```
+## 28. Practice some SQl queries
+```
+    SELECT * 
+FROM
+	yellow_taxi_trip t,
+	zones zpu,
+	zones zdo
+WHERE
+	t."PULocationID" =zpu."LocationID" AND
+	t."DOLocationID" = zdo."LocationID"
+LIMIT 100;
+```
+## AND 
+```
+    SELECT 
+	t.tpep_pickup_datetime,
+	t.tpep_dropoff_datetime,
+	total_amount,
+	CONCAT(zpu."Borough",  ' / ' , zpu."Zone") AS "pickup_loc",
+	CONCAT(zdo."Borough", ' / ', zdo."Zone") AS "dropoff_loc"
+FROM
+	yellow_taxi_trip t,
+	zones zpu,
+	zones zdo
+WHERE
+	t."PULocationID" =zpu."LocationID" AND
+	t."DOLocationID" = zdo."LocationID"
+LIMIT 100;
+```
