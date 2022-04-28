@@ -15,7 +15,7 @@ You don't need these instructions if you use WSL. It's only for "plain Windows"
   * Power Shell should also work, but will require adjustments 
 * Download SDK in zip: https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip
   * source: https://cloud.google.com/sdk/docs/downloads-interactive
-* Unzip it and run the `install.sh` script
+* Unzip it and run the `install.sh` script (use bash)
 
 When installing it, you might see something like that:
 
@@ -31,6 +31,12 @@ Now we need to point it to correct Python installation. Assuming you use [Anacon
 
 ```bash
 export CLOUDSDK_PYTHON=~/Anaconda3/python
+```
+
+*If you are using only Python, you can:
+```
+export CLOUDSDK_PYTHON=~/AppData/Local/Programs/Python/Python310/python.exe
+
 ```
 
 Now let's check that it works:
@@ -52,7 +58,10 @@ gsutil 5.5
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS=~/.gc/ny-rides.json
 ```
-
+* I did
+```
+export GOOGLE_APPLICATION_CREDENTIALS=C:/Users/User/Desktop/Github/zoomcamp-by-me/week_1_basics_n_setup/1_terraform_gcp/amazing-chemist-348617-dd8c3e7e3ff8.json
+```
 Now authenticate: 
 
 ```bash
@@ -74,7 +83,7 @@ If you get a message like `quota exceeded`
 Then run this:
 
 ```bash
-PROJECT_NAME="ny-rides-alexey"
+PROJECT_NAME="dtc-de"
 gcloud auth application-default set-quota-project ${PROJECT_NAME}
 ```
 
@@ -83,12 +92,31 @@ gcloud auth application-default set-quota-project ${PROJECT_NAME}
 
 * [Download Terraform](https://www.terraform.io/downloads)
 * Put it to a folder in [PATH](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7)
+* Run MINGW64 as administrator and run 
+``` 
+mv  ~/Desktop/Github/zoomcamp-by-me/week_1_basics_n_setup/1_terraform_gcp/terraform.exe ~/usr/bin/
+```
 * Go to the location with Terraform files and initialize it
 
 ```bash
 terraform init
 ```
+### Setup for Access
+ 
+1. [IAM Roles](https://cloud.google.com/storage/docs/access-control/iam-roles) for Service account:
+   * Go to the *IAM* section of *IAM & Admin* https://console.cloud.google.com/iam-admin/iam
+   * Click the *Edit principal* icon for your service account.
+   * Add these roles in addition to *Viewer* : **Storage Admin** + **Storage Object Admin** + **BigQuery Admin**
+   
+2. Enable these APIs for your project:
+   * https://console.cloud.google.com/apis/library/iam.googleapis.com
+   * https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
+   
+3. Please ensure `GOOGLE_APPLICATION_CREDENTIALS` env-var is set.
+   ```shell
+   export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.json"
 
+## Terraform again
 Optionally you can configure your terraform files (`variables.tf`) to include your project id:
 
 ```bash
