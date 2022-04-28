@@ -134,4 +134,13 @@ python ingest_data.py \
 ```
     ipconfig
 ```
-## 23. Open a browser and go to your IP address and port 8080. Then you can see the files in the local server.
+## 23. Open a browser and go to your IP address and port 8000. Then you can see the files in the local server.
+
+## 24. Instead of using network we could use docker compose.
+``` 
+    docker-compose up -d
+```
+## 25. To shut down the containers use the following command
+```
+    docker-compose down
+```
