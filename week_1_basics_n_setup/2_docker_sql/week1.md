@@ -74,3 +74,8 @@ https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv
 ## You'll see the containers running. Just as this image:
     ![image](.\Docker-containers running.PNG)
 
+## 14. Convert the jupyter notebook into a python script.
+```
+    jupyter nbconvert --to=script upload-data.ipynb
+```
+
