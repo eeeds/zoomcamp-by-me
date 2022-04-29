@@ -27,6 +27,7 @@ local_workflow = DAG(
 URL_PREFIX = 'https://s3.amazonaws.com/nyc-tlc/trip+data/'
 URL_TEMPLATE = URL_PREFIX + 'yellow_tripdata_{{ execution_date.strftime(\"%Y-%m\") }}.csv'
 OUTPUT_FILE_TEMPLATE = AIRFLOW_HOME + '/output_{{ execution_date.strftime(\"%Y-%m\") }}.csv'
+TABLE_NAME_TEMPLATE = 'yellow_taxi_{{ execution_date.strftime(\"%Y-%m\") }}'
 
 
 with local_workflow:
@@ -44,7 +45,7 @@ with local_workflow:
             port=PG_PORT,
             host=PG_HOST,
             db=PG_DATABASE,
-            table_name="yellow_tripdata",
+            table_name=TABLE_NAME_TEMPLATE,
             csv_file=OUTPUT_FILE_TEMPLATE
         ),
 

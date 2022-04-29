@@ -74,3 +74,7 @@ engine = sqlalchemy.create_engine('postgresql://root:root@localhost:5432/ny_taxi
 ```
 engine.connect()
 ```
+## 14. If all is working, then run all the code in ingest from the airflow UI
+```
+## 15. End of the tutorial
+```
