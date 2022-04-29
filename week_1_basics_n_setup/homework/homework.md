@@ -36,6 +36,10 @@ After that, run
 Apply the plan and copy the output (after running `apply`) to the form.
 
 It should be the entire output - from the moment you typed `terraform init` to the very end.
+## Answer:
+```
+I did all of this but I don't have credit card, so the output was a error message.
+```
 
 ## Prepare Postgres 
 
