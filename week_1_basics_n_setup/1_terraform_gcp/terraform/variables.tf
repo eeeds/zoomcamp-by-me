@@ -3,12 +3,12 @@ locals {
 }
 
 variable "project" {
-  description = "Your GCP Project ID"
+  description = "Insert your ID project"
 }
 
 variable "region" {
   description = "Region for GCP resources. Choose as per your location: https://cloud.google.com/about/locations"
-  default = "europe-west6"
+  default = "southamerica-east1"
   type = string
 }
 
