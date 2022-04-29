@@ -1,1 +1,4 @@
 **/ny_taxi_postgres_data/*
+**/1_terraform_gcp/amazing*
+**/1_terraform_gcp/terraform/*
+**/*.csv
